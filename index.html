@@ -7,6 +7,20 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
+<div class="container">
+    <div class="todo-app">
+        <h2>To-Do List <img src="images/pen.webp" alt=""> </h2>
+        <div class="row">
+            <input class="todo-input" type="text" id="input-box" placeholder="Add todo text...">
+            <button onclick="addTask()" class="add-button">Add</button>
+        </div>
+        <ul id="list-container">
+            <!-- <li class="checked">Task 1</li>
+            <li class="checked">Task 2</li>
+            <li class="checked">Task 3</li> -->
+        </ul>
+    </div>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
