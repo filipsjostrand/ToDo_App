@@ -15,9 +15,20 @@ function addTask() {
     span.innerHTML = "\u00d7";
     li.appendChild(span);
     span.className = "delete-todo-cross"
+    let editImage = document.createElement("img");
+    editImage.className = "edit-created-todo"
+    editImage.src = "images/Edit_icon_(the_Noun_Project_30184).svg"
+
+    // editButton.innerHTML = "image";
+    li.appendChild(editImage);
+
+    // Add click event listener to the editImage
+    editImage.addEventListener('click', function() {
+      alert('Image clicked!');
+    });
+    saveData()
   }
   inputBox.value = '';
-  saveData()
 }
 
 // Todo onclick: Toggle checked/unchecked (todo), span onclick: remove todo
@@ -39,5 +50,19 @@ function saveData() {
 // Get todo-data from localStorage
 function showTask() {
   listContainer.innerHTML = localStorage.getItem("brainstorm-data");
+
+  const images = listContainer.querySelectorAll('img.edit-created-todo');
+
+    // Loop through the NodeList and add a click event listener to each image
+    images.forEach(image => {
+      image.addEventListener('click', function() {
+        // Display an alert box when the image is clicked
+        alert('Image clicked!');
+      });
+    });
+
 }
+
+
+
 showTask();

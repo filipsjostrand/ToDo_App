@@ -22,8 +22,6 @@
     margin-right: auto;
     margin-top: 100px;
     margin-bottom: 20px;
-    padding-left: 40px;
-    padding-right: 40px;
     padding-top: 70px;
     padding-bottom: 40px;
     border-radius:10px;
@@ -123,9 +121,48 @@ ul li span:hover {
     background: #edeef0;
 }
 
+.edit-created-todo {
+    display: flex;
+    width: 20px;
+    height: 20px;
+    justify-content: right;
+    margin-left: 10px;
+    /* margin-left: auto; */
+}
+
 .delete-todo-cross {
     display: flex;
     justify-content: right;
-    padding: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-bottom: 5px;
     margin-left: auto;
+}
+
+/* Computer screens and larger */
+    /* Add your computer-specific styles here */
+@media screen and (min-width: 1024px) {
+    .todo-app {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
+
+/* Tablets and larger screens */
+    /* Add your tablet-specific styles here */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .todo-app {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
+
+/* Mobile screens */
+@media screen and (max-width: 767px) {
+    /* Add your mobile-specific styles here */
+
+    .todo-app {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }
