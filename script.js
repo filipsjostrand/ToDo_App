@@ -1,7 +1,13 @@
-// Code from GreatStack: https://www.youtube.com/watch?v=G0jO8kUrg-I
+// Modified code base from GreatStack: https://www.youtube.com/watch?v=G0jO8kUrg-I
 
 const inputBox = document.getElementById("input-box");
 const listContainer = document.getElementById("list-container");
+
+// Get a reference to the image element
+const copyImage = document.querySelector("img.edit-created-todo");
+
+const charCounter = document.getElementById('char-counter');
+const maxChars = 50;
 
 // Add todo (empty input field)
 function addTask() {
@@ -9,60 +15,118 @@ function addTask() {
     alert("You must write a todo text!");
   } else {
     let li = document.createElement("li");
+    checkNumberOfCharacters(inputBox)
     li.innerHTML = inputBox.value;
     listContainer.appendChild(li);
+
     let span = document.createElement("span");
     span.innerHTML = "\u00d7";
+    span.className = "delete-todo-cross";
     li.appendChild(span);
-    span.className = "delete-todo-cross"
-    let editImage = document.createElement("img");
-    editImage.className = "edit-created-todo"
-    editImage.src = "images/Edit_icon_(the_Noun_Project_30184).svg"
 
-    // editButton.innerHTML = "image";
-    li.appendChild(editImage);
+    let copyImage = document.createElement("img");
+    copyImage.className = "copy-created-todo";
+    copyImage.src = "images/Bw_copy_icon_320x320.png";
+    copyImage.alt =
+      "By PeterMe1508 - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=67914718";
+    li.appendChild(copyImage);
 
-    // Add click event listener to the editImage
-    editImage.addEventListener('click', function() {
-      alert('Image clicked!');
+    // Add click event listener to the copyImage
+    copyImage.addEventListener("click", function () {
+      editTodoText(li);
+
     });
-    saveData()
+
+    saveData();
   }
-  inputBox.value = '';
+  inputBox.value = "";
+}
+
+// Edit todo text
+function editTodoText(li) {
+  // copyImage.src = "images/Noun_Project_Save_Icon_1527077.svg";
+  // copyImage.alt="By Astutik Icon - https://thenounproject.com/search/?q=floppy%20disk&i=1527077, CC BY 3.0, https://commons.wikimedia.org/w/index.php?curid=87489803";
+  // li.appendChild(copyImage);
+  let currentText = li.childNodes[0].nodeValue; // Get current text
+  let input = document.createElement("input");
+  input.type = "text";
+  input.value = currentText;
+  input.className = "edit-input";
+  let currentTodo = li.childNodes[0].nodeValue
+  li.childNodes[0].nodeValue = ''; // Clear current text
+  // li.childNodes[0].nodeValue = currentText;
+  li.childNodes[0].textContent = currentText;
+
+
+  li.insertBefore(input, li.firstChild);
+  li.childNodes[0].nodeValue = currentTodo;
+  // li.insertBefore(input, copyImage);
+
+
+  // input.addEventListener("keypress", function (e) {
+  //   if (e.key === "Enter") {
+  //     li.childNodes[0].nodeValue = input.value;
+  //     li.removeChild(input);
+  //     saveData();
+  //   }
+  // });
+
+  input.addEventListener("blur", function () {
+    li.childNodes[0].nodeValue = input.value;
+    // if(li.childNodes[0].nodeValue = '') {
+    //   li.childNodes[0].nodeValue = currentText
+    // };
+    li.removeChild(input);
+    saveData();
+  });
+
+  input.focus();
 }
 
 // Todo onclick: Toggle checked/unchecked (todo), span onclick: remove todo
-listContainer.addEventListener("click", function(e) {
-  if(e.target.tagName  === "LI") {
-  e.target.classList.toggle("checked");
-  saveData()
-} else if(e.target.tagName ==="SPAN"){
-  e.target.parentElement.remove();
-  saveData()
+listContainer.addEventListener(
+  "click",
+  function (e) {
+    if (e.target.tagName === "LI") {
+      e.target.classList.toggle("checked");
+      saveData();
+    } else if (e.target.tagName === "SPAN") {
+      e.target.parentElement.remove();
+      saveData();
+    }
+  },
+  false
+);
+
+function checkNumberOfCharacters(inputBox) {
+
+  // inputBox.addEventListener('input', function() {
+    const currentLength = inputBox.value.length;
+    charCounter.textContent = `${currentLength}/${maxChars}`;
+
+    if (currentLength > maxChars) {
+      inputBox.value = inputBox.value.slice(0, maxChars); // Trim the excess characters
+      charCounter.textContent = `${maxChars}/${maxChars}`;
+    }
+
+    // Add or remove 'exceeded' class based on current length
+    if (currentLength > maxChars) {
+      charCounter.classList.add('exceeded');
+    } else {
+      charCounter.classList.remove('exceeded');
+    }
+  // });
+  return inputBox.value;
 }
-}, false);
 
 // Save todo-data to localStorage
 function saveData() {
-  localStorage.setItem("brainstorm-data", listContainer.innerHTML)
+  localStorage.setItem("data", listContainer.innerHTML);
 }
 
-// Get todo-data from localStorage
+// Get todo-data from localStorage and re-add event listeners to the images
 function showTask() {
-  listContainer.innerHTML = localStorage.getItem("brainstorm-data");
-
-  const images = listContainer.querySelectorAll('img.edit-created-todo');
-
-    // Loop through the NodeList and add a click event listener to each image
-    images.forEach(image => {
-      image.addEventListener('click', function() {
-        // Display an alert box when the image is clicked
-        alert('Image clicked!');
-      });
-    });
-
+  listContainer.innerHTML = localStorage.getItem("data");
 }
-
-
 
 showTask();

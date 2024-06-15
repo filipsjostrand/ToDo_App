@@ -1,4 +1,4 @@
-/* Code from GreatStack: https://www.youtube.com/watch?v=G0jO8kUrg-I */
+/* Modified code base from GreatStack: https://www.youtube.com/watch?v=G0jO8kUrg-I */
 
 *{
     margin: 0;
@@ -121,7 +121,7 @@ ul li span:hover {
     background: #edeef0;
 }
 
-.edit-created-todo {
+.copy-created-todo {
     display: flex;
     width: 20px;
     height: 20px;
