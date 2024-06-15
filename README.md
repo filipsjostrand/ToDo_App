@@ -6,7 +6,7 @@ Functionality:
 - Mark todos (Check (with a strikethrough line)/uncheck) as "completed/not completed".
 - Remove todos.
 
-How use:
+How-to-use:
 The project can be downloaded and the index.html opened in a browser of choice.
 
 Comments:
