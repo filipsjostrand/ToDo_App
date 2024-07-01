@@ -46,7 +46,6 @@ function addTask() {
 function editTodoText(li) {
   // copyImage.src = "images/Noun_Project_Save_Icon_1527077.svg";
   // copyImage.alt="By Astutik Icon - https://thenounproject.com/search/?q=floppy%20disk&i=1527077, CC BY 3.0, https://commons.wikimedia.org/w/index.php?curid=87489803";
-  // li.appendChild(copyImage);
   let currentText = li.childNodes[0].nodeValue; // Get current text
   let input = document.createElement("input");
   input.type = "text";
@@ -54,28 +53,14 @@ function editTodoText(li) {
   input.className = "edit-input";
   let currentTodo = li.childNodes[0].nodeValue
   li.childNodes[0].nodeValue = ''; // Clear current text
-  // li.childNodes[0].nodeValue = currentText;
   li.childNodes[0].textContent = currentText;
 
 
   li.insertBefore(input, li.firstChild);
   li.childNodes[0].nodeValue = currentTodo;
-  // li.insertBefore(input, copyImage);
-
-
-  // input.addEventListener("keypress", function (e) {
-  //   if (e.key === "Enter") {
-  //     li.childNodes[0].nodeValue = input.value;
-  //     li.removeChild(input);
-  //     saveData();
-  //   }
-  // });
 
   input.addEventListener("blur", function () {
     li.childNodes[0].nodeValue = input.value;
-    // if(li.childNodes[0].nodeValue = '') {
-    //   li.childNodes[0].nodeValue = currentText
-    // };
     li.removeChild(input);
     saveData();
   });
@@ -99,8 +84,7 @@ listContainer.addEventListener(
 );
 
 function checkNumberOfCharacters(inputBox) {
-
-  // inputBox.addEventListener('input', function() {
+  
     const currentLength = inputBox.value.length;
     charCounter.textContent = `${currentLength}/${maxChars}`;
 

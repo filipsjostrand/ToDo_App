@@ -8,8 +8,21 @@
 <body>
     <div class="todo-div">
         <input class="todo-input-v2" type="text" id="input-box-v2" placeholder="Add todo text...">
+        <label for="todo-select">Apply to:</label>
+            <select name="todos" id="todo-select">
+            <option value="">Todo list</option>
+            <option value="todo-one">#1</option>
+            <option value="todo-two">#2</option>
+            <option value="todo-three">#3</option>
+            </select>
         <button onclick="addTaskToSet()" class="add-button-v2">Add</button>
+        <div>...</div>
+        <button onclick="resetTodoSet()" class="reset-todo-button">Reset todos</button>
+        <div>...</div>
     </div>
+    <div id="todo-1">1. ...</div>
+    <div id="todo-2">2. ...</div>
+    <div id="todo-3">3. ...</div>
     <script src="todoScript.js"></script>
 </body>
 </html>
