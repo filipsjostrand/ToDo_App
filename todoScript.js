@@ -1,5 +1,8 @@
+// const listContainer = document.getElementById("list-container");
+
 let todoInput = document.getElementById("input-box-v2");
 let todoOne = document.getElementById("todo-1");
+// let todoOneCheckBox = document.getElementById("todo-1-checkbox");
 let todoTwo = document.getElementById("todo-2");
 let todoThree = document.getElementById("todo-3");
 let resetTodoButton = document.querySelector(".reset-todo-button");
@@ -9,9 +12,8 @@ var dropDownSelection = document.getElementById("todo-select");
 var dropDownText;
 let editTodoOne;
 
-// 2024-07-03, Nästa gång:
-//  1. Skapa checkbox:ar
-//  2. Spara todos till localStorage (!?) ((Längst ner i addTaskToSet()(?)))
+// 2024-07-13, Nästa gång:
+//  1. Fixa checkbox-funktionalitet
 //  3. Fixa CSS
 
 const characterCounter = document.getElementById('character-counter');
@@ -52,8 +54,11 @@ updateDropDownText();
 function resetTodoSet() {
   limitedTodoSet = new Set();
   todoOne.innerHTML = "1. ...";
+  saveTaskOne();
   todoTwo.innerHTML = "2. ...";
+  saveTaskTwo();
   todoThree.innerHTML = "3. ...";
+  saveTaskThree();
   todoInput.value = "";
   window.location.reload();
 }
@@ -69,6 +74,9 @@ function editTodoSet() {
   todoOne.innerHTML = [...limitedTodoSet][0];
   todoTwo.innerHTML = [...limitedTodoSet][1];
   todoThree.innerHTML = [...limitedTodoSet][2];
+  saveTaskOne();
+  saveTaskTwo();
+  saveTaskThree();
   todoInput.value = "";
 }
 
@@ -98,6 +106,7 @@ function addTaskToSet() {
           editTodoThree = ". . .";
         };
     editTodoSet();
+    saveTaskOne();
   }
 
   if (todoTwo.innerHTML != "2. ..." && dropDownText !== "Todo list" && dropDownText === "#2" && todoInput.value !== "") {
@@ -113,6 +122,8 @@ function addTaskToSet() {
         editTodoThree = " ...";
       };
     editTodoSet();
+    saveTaskTwo();
+
   }
   if (todoThree.innerHTML != "3. ..." && dropDownText !== "Todo list" && dropDownText === "#3" && todoInput.value !== "") {
     console.log("r101 ooa)")
@@ -136,19 +147,43 @@ function addTaskToSet() {
       newTodo = "1. " + todoInput.value
       limitedTodoSet.add(newTodo);
       todoOne.innerHTML = [...limitedTodoSet][0];
+      saveTaskOne();
       todoInput.value = "";
 
     } else if (todoOne.innerHTML != "1. ..." && todoTwo.innerHTML === "2. ..." && dropDownText === "Todo list") {
       newTodo = "2. " + todoInput.value
       limitedTodoSet.add(newTodo);
       todoTwo.innerHTML = [...limitedTodoSet][1];
+      saveTaskTwo();
       todoInput.value = "";
 
     } else if (todoOne.innerHTML != "1. ..." && todoTwo.innerHTML != "2. ..." && dropDownText === "Todo list" && todoThree.innerHTML === "3. ...") {
       newTodo = "3. " + todoInput.value
       limitedTodoSet.add(newTodo);
       todoThree.innerHTML = [...limitedTodoSet][2];
+      saveTaskThree();
       todoInput.value = "";
     }
+    // saveData();
   }
 }
+
+// Save todo-data to localStorage
+function saveTaskOne() {
+  localStorage.setItem("todoOneStore", todoOne.innerHTML);
+}
+function saveTaskTwo() {
+  localStorage.setItem("todoTwoStore", todoTwo.innerHTML);
+}
+function saveTaskThree() {
+  localStorage.setItem("todoThreeStore", todoThree.innerHTML);
+}
+
+// Get todo-data from localStorage
+function showTask() {
+  todoOne.innerHTML = localStorage.getItem("todoOneStore");
+  todoTwo.innerHTML = localStorage.getItem("todoTwoStore");
+  todoThree.innerHTML = localStorage.getItem("todoThreeStore");
+}
+
+showTask();
