@@ -2,7 +2,6 @@
 
 let todoInput = document.getElementById("input-box-v2");
 let todoOne = document.getElementById("todo-1");
-// let todoOneCheckBox = document.getElementById("todo-1-checkbox");
 let todoTwo = document.getElementById("todo-2");
 let todoThree = document.getElementById("todo-3");
 let resetTodoButton = document.querySelector(".reset-todo-button");
@@ -12,15 +11,46 @@ var dropDownSelection = document.getElementById("todo-select");
 var dropDownText;
 let editTodoOne;
 
-// 2024-07-13, Nästa gång:
-//  1. Fixa checkbox-funktionalitet
-//  3. Fixa CSS
+// 2024-07-15, Nästa gång:
+//  1. Fixa CSS
+//  2. Skriv ReadMe.txt
 
 const characterCounter = document.getElementById('character-counter');
 const maximumChars = 50;
-
 const maxElements = 3;
 let limitedTodoSet = new Set();
+
+// _ _ _
+
+// let checkbox = document.querySelector(".checkbox");
+let checkboxOne = document.getElementById("first");
+let checkboxTwo = document.getElementById("second");
+let checkboxThree = document.getElementById("third");
+
+// Optionally, add an event listener to handle the checkbox state
+checkboxOne.addEventListener('change', function() {
+    if (checkboxOne.checked) {
+      todoOne.style.textDecoration = 'line-through';
+    } else {
+      todoOne.style.textDecoration = 'none';
+    }
+  });
+
+checkboxTwo.addEventListener('change', function() {
+    if (checkboxTwo.checked) {
+      todoTwo.style.textDecoration = 'line-through';
+    } else {
+      todoTwo.style.textDecoration = 'none';
+    }
+});
+
+checkboxThree.addEventListener('change', function() {
+    if (checkboxThree.checked) {
+      todoThree.style.textDecoration = 'line-through';
+    } else {
+      todoThree.style.textDecoration = 'none';
+    }
+});
 
 // _ _ _
 

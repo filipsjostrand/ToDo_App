@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo list (with Set)</title>
+    <link rel="stylesheet" href="todo-set.css">
+</head>
+<body>
+    <div class="todo-div">
+        <button onclick="resetTodoSet()" class="reset-todo-button">Reset todos</button>
+        <div id="character-counter" class="character-counter"></div>
+        <div>...</div>
+        <input class="todo-input-v2" type="text" id="input-box-v2" placeholder="Add todo text...">
+        <label for="todo-select">Apply to:</label>
+            <select name="todos" id="todo-select">
+            <option value="" selected>Todo list</option>
+            <option value="todo-one">#1</option>
+            <option value="todo-two">#2</option>
+            <option value="todo-three">#3</option>
+            </select>
+        <button onclick="addTaskToSet()" class="add-button-v2">Add</button>
+        <div>...</div>
+
+    </div>
+
+    <div id="todo-1-container">
+            <input type="checkbox" class="checkbox" id="first" name="todo" value="first" />
+            <label for="first"></label>
+        <div id="todo-1">
+            <span class="todo-text-1">1. ...</span>
+        </div>
+    </div>
+
+    <div id="todo-2-container">
+            <input type="checkbox" class="checkbox" id="second" name="todo" value="second" />
+            <label for="second"></label>
+        <div id="todo-2">
+            <span class="todo-text-2">2. ...</span>
+        </div>
+    </div>
+
+    <div id="todo-3-container">
+            <input type="checkbox" class="checkbox" id="third" name="todo" value="third" />
+            <label for="third"></label>
+        <div id="todo-3">
+            <span class="todo-text-3">3. ...</span>
+        </div>
+    </div>
+
+    <!-- <div id="todo-one">
+        <input type="checkbox" id="first" name="todo" value="first" />
+
+        <label for="first"></label>
+        <span id="todo-1" >1. ...</span>
+    </div>
+    <div id="todo-two">
+        <input type="checkbox" id="second" name="todo" value="second" />
+
+        <label for="first"></label>
+        <span id="todo-2" >2. ...</span>
+    </div>
+    <div id="todo-three">
+        <input type="checkbox" id="third" name="todo" value="third" />
+
+        <label  for="first"></label>
+        <span id="todo-3" >3. ...</span>
+    </div> -->
+        <!-- <label id="todo-1" for="first">1. ...</label> -->
+        <!-- <label id="todo-2" for="first">2. ...</label> -->
+        <!-- <label id="todo-3" for="first">3. ...</label> -->
+
+    <!-- <div id="todo-1">1. ...</div>
+    <div id="todo-2">2. ...</div>
+    <div id="todo-3">3. ...</div> -->
+    <script src="todoScript.js"></script>
+</body>
+</html>
