@@ -22,7 +22,6 @@ let limitedTodoSet = new Set();
 
 // _ _ _
 
-// let checkbox = document.querySelector(".checkbox");
 let checkboxOne = document.getElementById("first");
 let checkboxTwo = document.getElementById("second");
 let checkboxThree = document.getElementById("third");
@@ -81,6 +80,7 @@ function updateDropDownText() {
 
 updateDropDownText();
 
+// Reset todos
 function resetTodoSet() {
   limitedTodoSet = new Set();
   todoOne.innerHTML = "1. ...";
@@ -93,6 +93,7 @@ function resetTodoSet() {
   window.location.reload();
 }
 
+// Common code for all todos (#1, #2, #3) (when editing)
 function editTodoSet() {
   limitedTodoSet = new Set();
   todoOne.innerHTML = ""
@@ -110,6 +111,7 @@ function editTodoSet() {
   todoInput.value = "";
 }
 
+// Add todos (to todo list)
 function addTaskToSet() {
     // console.log("addTaskToSet() körs")
     updateDropDownText();
@@ -119,10 +121,11 @@ function addTaskToSet() {
     alert("You must write a todo text!");
   }
 
-   // Ändra specifika todos (edit)
+
   if (limitedTodoSet.size === maxElements && dropDownText === "Todo list") {
     alert("Current Todo limit (3) is reached.");
   }
+  // Ändra specifika todos (edit)
   if (todoOne.innerHTML != "1. ..." && dropDownText !== "Todo list" && dropDownText === "#1" && todoInput.value !== "") {
     editTodoOne = "1. " + todoInput.value
     if (limitedTodoSet.has([...limitedTodoSet][1])) {
