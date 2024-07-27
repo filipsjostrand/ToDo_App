@@ -121,25 +121,35 @@ function addTaskToSet() {
     alert("You must write a todo text!");
   }
 
-
+// Om todo-maxgräns (3x) uppnådd: alert-box skrivs ut
   if (limitedTodoSet.size === maxElements && dropDownText === "Todo list") {
     alert("Current Todo limit (3) is reached.");
   }
   // Ändra specifika todos (edit)
+  // p1. Om Todo #1 inte är "1. ..." och alternativ "#1" är valt i rullmeny
+  // p2. Lägg in värde i editTodo(number)
+  // p3. Om limitedTodoSet har värden för todo #x och #y -> lägg in värden [...limitedTodoSet][a] & [...limitedTodoSet][b] i editTodo(number)-variabler
+  // p4. Lägg in en text-sträng om en specifik todo ändras och någon annan är tom (saknar värde)
+
+  // "p1."
   if (todoOne.innerHTML != "1. ..." && dropDownText !== "Todo list" && dropDownText === "#1" && todoInput.value !== "") {
     editTodoOne = "1. " + todoInput.value
+     // "p2."
     if (limitedTodoSet.has([...limitedTodoSet][1])) {
       editTodoTwo = [...limitedTodoSet][1]}
+      // "p3."
       else {
         editTodoTwo = "...";
       };
       if (limitedTodoSet.has([...limitedTodoSet][2])) {
         editTodoThree = [...limitedTodoSet][2]}
+        // "p4."
         else {
           editTodoThree = ". . .";
         };
     editTodoSet();
     saveTaskOne();
+    showTask();
   }
 
   if (todoTwo.innerHTML != "2. ..." && dropDownText !== "Todo list" && dropDownText === "#2" && todoInput.value !== "") {
@@ -156,10 +166,9 @@ function addTaskToSet() {
       };
     editTodoSet();
     saveTaskTwo();
-
+    showTask()
   }
   if (todoThree.innerHTML != "3. ..." && dropDownText !== "Todo list" && dropDownText === "#3" && todoInput.value !== "") {
-    console.log("r101 ooa)")
     if (limitedTodoSet.has([...limitedTodoSet][0])) {
       editTodoOne = [...limitedTodoSet][0]}
       else {
@@ -172,6 +181,8 @@ function addTaskToSet() {
       };
     editTodoThree = "3. " + todoInput.value
     editTodoSet();
+    editTodoSet();
+    showTask()
   }
 
   // Lägg till todos (en i taget)
@@ -197,7 +208,6 @@ function addTaskToSet() {
       saveTaskThree();
       todoInput.value = "";
     }
-    // saveData();
   }
 }
 
@@ -220,3 +230,22 @@ function showTask() {
 }
 
 showTask();
+
+// 1. Check if todoOne.innerHTML innehåller todo (kod i else-sats: om todo finns)
+if (todoOne.innerHTML === "" || todoOne.innerHTML.includes("1. ...") || todoOne.innerHTML === undefined) {
+} else {
+  limitedTodoSet.add(todoOne.innerHTML);
+  saveTaskOne();
+}
+
+if (todoTwo.innerHTML === "" || todoTwo.innerHTML.includes("2. ...") || todoTwo.innerHTML === undefined) {
+} else {
+  limitedTodoSet.add(todoTwo.innerHTML);
+  saveTaskTwo();
+}
+
+if (todoThree.innerHTML === "" || todoThree.innerHTML.includes("3. ...") || todoThree.innerHTML === undefined) {
+} else {
+  limitedTodoSet.add(todoThree.innerHTML);
+  saveTaskThree();
+}
