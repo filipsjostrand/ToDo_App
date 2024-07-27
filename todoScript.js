@@ -181,7 +181,7 @@ function addTaskToSet() {
       };
     editTodoThree = "3. " + todoInput.value
     editTodoSet();
-    editTodoSet();
+    saveTaskThree();
     showTask()
   }
 
