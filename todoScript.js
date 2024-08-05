@@ -249,3 +249,41 @@ if (todoThree.innerHTML === "" || todoThree.innerHTML.includes("3. ...") || todo
   limitedTodoSet.add(todoThree.innerHTML);
   saveTaskThree();
 }
+
+// _ _ _
+
+        // Function to get the current weekday as a three-letter abbreviation
+        function getWeekday(date) {
+          const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+          return weekdays[date.getDay()];
+      }
+
+        // Function to format date as YYYY-MM-DD
+        function formatDate(date) {
+          const year = date.getFullYear();
+          const month = String(date.getMonth() + 1).padStart(2, '0');
+          const day = String(date.getDate()).padStart(2, '0');
+          return `${year}-${month}-${day}`;
+      }
+
+      // Function to get the current week number of the year
+      function getWeekNumber(date) {
+          const startOfYear = new Date(date.getFullYear(), 0, 1);
+          const pastDaysOfYear = (date - startOfYear) / 86400000;
+          return Math.ceil((pastDaysOfYear + startOfYear.getDay() + 1) / 7);
+      }
+
+      // Get today's date
+      const today = new Date();
+
+      // Display current weekday
+      const weekdayDisplay = document.getElementById('weekday-display');
+      weekdayDisplay.textContent = `${getWeekday(today)}`;
+
+      // Display today's date
+      const dateDisplay = document.getElementById('date-display');
+      dateDisplay.textContent = `${formatDate(today)}`;
+
+      // Display current week number
+      const weekDisplay = document.getElementById('week-display');
+      weekDisplay.textContent = `Week: ${getWeekNumber(today)}`;
