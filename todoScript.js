@@ -252,6 +252,18 @@ if (todoThree.innerHTML === "" || todoThree.innerHTML.includes("3. ...") || todo
 
 // _ _ _
 
+        // Function to get the current date in CET
+        function getCETDate() {
+          const now = new Date();
+          // Convert to milliseconds
+          const utcOffset = now.getTimezoneOffset() * 60000;
+          // Create a new date object in UTC
+          const utcTime = now.getTime() + utcOffset;
+          // Add the CET offset (UTC+1, which is 3600000 milliseconds)
+          const cetTime = utcTime + 3600000;
+          return new Date(cetTime);
+      }
+
         // Function to get the current weekday as a three-letter abbreviation
         function getWeekday(date) {
           const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -273,8 +285,9 @@ if (todoThree.innerHTML === "" || todoThree.innerHTML.includes("3. ...") || todo
           return Math.ceil((pastDaysOfYear + startOfYear.getDay() + 1) / 7);
       }
 
-      // Get today's date
-      const today = new Date();
+
+      // Get today's date in CET
+      const today = getCETDate();
 
       // Display current weekday
       const weekdayDisplay = document.getElementById('weekday-display');
