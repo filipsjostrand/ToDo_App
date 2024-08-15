@@ -1,10 +1,12 @@
 ToDo_App
 
+A slightly updated version of application is available at: https://filipsjostrand.github.io/
+
 Functionality:
-- Write and add todos.
-- Copy text from newly created todos (for possible storage).
-- Mark todos (Check (with a strikethrough line)/uncheck) as "completed/not completed".
-- Remove todos.
+- Add todos.
+- Replace todos.
+- Check todos (Check (with a strikethrough line)/uncheck) as "completed/not completed".
+- Reset todos.
 
 How-to-use:
 The project can be downloaded and the index.html opened in a browser of choice.
@@ -17,5 +19,5 @@ Comments:
 Credits to GreatStack (on Youtube)
 The code base from GreatStack: https://www.youtube.com/watch?v=G0jO8kUrg-I
 
-2024-06-15 
+2024-08-15
 /Filip Sjöstrand

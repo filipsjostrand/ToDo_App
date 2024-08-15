@@ -84,7 +84,7 @@ listContainer.addEventListener(
 );
 
 function checkNumberOfCharacters(inputBox) {
-  
+
     const currentLength = inputBox.value.length;
     charCounter.textContent = `${currentLength}/${maxChars}`;
 
